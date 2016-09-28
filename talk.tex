@@ -1,0 +1,110 @@
+% Nowadays, an alternative to directly create a presentation
+% in LaTeX is to use pandoc (with e.g. Markdown as input):
+%
+% - default template: https://github.com/jgm/pandoc-templates
+%   (`default.beamer`)
+% - user contributed:
+%   https://github.com/jgm/pandoc/wiki/User-contributed-templates
+% - adjust the default pandoc template to include below settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% automatically loads e.g.
+%   xcolor
+%   colortbl - commands for colorizing tables
+%   hyperref - e.g. \url, \href, inter-PDF-links ...
+%\documentclass[xcolor={dvipsnames,table}]{beamer}
+% compress: e.g. put dots in one line in the miniframes theme
+\documentclass[xcolor={dvipsnames,table},compress]{beamer}
+
+\mode<presentation>
+{
+  %\usetheme{Hannover}
+  %\usetheme[right]{Berkeley}
+  %\usetheme{Szeged}
+  %\usetheme{Singapore}
+
+  % footline=authortitle
+  \useoutertheme[subsection=false]{miniframes}
+  %\useoutertheme{smoothbars}
+
+  %\useinnertheme{rectangles}
+
+  % innercolor theme
+  %\usecolortheme{orchid} % counterpart thos whale
+  \usecolortheme{rose} % also compatbile with whale
+  % outer color theme
+  \usecolortheme{whale}
+}
+
+\usepackage[english]{babel}
+%\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% latin modern - 'The fonts, as compared to the CM family,
+% contain a lot of additional characters, mainly accented
+% ones.' http://www.ctan.org/tex-archive/fonts/lm/
+\usepackage{lmodern}
+
+% e.g.: \includegraphics ...
+\usepackage{graphicx}
+
+% e.g. \align ...
+\usepackage{amsmath}
+
+% verbatim program code:
+\usepackage{listings}
+\lstset{language=C,
+  basicstyle=\ttfamily,
+  commentstyle=\color{ForestGreen}
+}
+
+% nicer tables:
+\usepackage{booktabs}
+
+%\institute{}
+\title{Title}
+\subtitle{Subtitle}
+\author[Last]{First Middle Last}
+%\date{}
+%\logo{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\section{Introduction}
+
+\begin{frame}{Motivation}
+\begin{itemize}
+\item first
+\item second
+\item[$\rightarrow$] the benefit
+\end{itemize}
+\end{frame}
+
+%\section{Main}
+
+% some environments like verbatim and lstlisting require
+% a fragile frame
+\begin{frame}[fragile]{Cachegrind/Callgrind Usage}
+  \begin{verbatim}
+$ echo Hello World
+\end{verbatim}
+\end{frame}
+
+%\subsection{Sub}
+%\section{Conclusion}
+
+\end{document}
+
+
