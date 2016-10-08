@@ -25,7 +25,10 @@ except ImportError:
   have_colorlog = False
 
 def mk_arg_parser():
-  p = argparse.ArgumentParser(description = 'Do some stuff')
+  p = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description = 'Do some stuff',
+        epilog='...')
   p.add_argument('items', metavar = 'N', type = int, nargs='+',
     help = 'some positional argument')
   # conditional default, if option not present then None
