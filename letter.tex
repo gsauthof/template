@@ -1,0 +1,64 @@
+\documentclass[a4paper]{scrlttr2}
+%\documentclass[a4paper,enlargefirstpage]{scrlttr2}
+%\documentclass[a4paper,DIV16]{scrlttr2}
+
+\usepackage[ngerman]{babel}
+%\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp} % euro symbol
+\usepackage[texcoord]{eso-pic}
+\usepackage{graphicx}
+
+% 4 column efiale pdf: first row, first column
+% trim -> left-margin-to-crop, bottom-margin-to-crop, right-margin-to-crop, top
+\newcommand{\includepostage}[1]{%
+  \AddToShipoutPictureBG*{%
+    \put(\LenToUnit{69mm},\LenToUnit{-70mm}){%
+      \includegraphics[trim=25mm 261mm 149mm 25mm,clip]{#1}}}}
+
+
+% Read some generic variable which likely are
+% constant for multiple letters, e.g.:
+%\setkomavar{fromname}{Dr.\ Joe User}
+%\setkomavar{fromaddress}{Fakestreet 1\\33613 Bielefeld}
+%\setkomavar{fromphone}{0\,12\,34~1\,23\,45\,67}
+%\setkomavar{fromemail}{mail@example.org}
+\input{$HOME/.config/latex/letter-conf.tex}
+
+
+% Letter specific options and variables
+
+\KOMAoptions{fromphone=true}
+\KOMAoptions{fromemail=false}
+
+%\setkomavar{yourref}[Bezeichnung]{Inhalt}
+%\setkomavar{yourmail}[Bezeichnung]{Inhalt}
+
+%\setkomavar{myref}[Bezeichnung]{Inhalt}
+
+%\setkomavar{customer}[Vertragsnummer]{}
+%\setkomavar{invoice}[Versicherungsscheinnummer]{}
+
+%\setkomavar{specialmail}{Büchersendung}
+%\setkomavar{specialmail}{Warensendung}
+
+\setkomavar{subject}{XXX}
+
+\begin{document}
+\begin{letter}{%
+XXX Max Mustermann\\
+etcStadt
+}
+%\includepostage{postage.pdf}
+%\setkomavar{date}{1.\ Mai 2012}
+\opening{Sehr geehrte Damen und Herren,}
+XXX
+\closing{Mit freundlichen Grüßen}
+%\renewcaptionname{ngerman}{\enclname}{Anlage}
+%\renewcaptionname{ngerman}{\enclname}{Anlagen}
+%\encl{Erste Anlage\\Zweite Anlage}
+
+\end{letter}
+\end{document}
