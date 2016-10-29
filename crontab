@@ -1,0 +1,14 @@
+# .---------------- minute (0..59)
+# |  .------------- hour   (0..23)
+# |  |  .---------- day of month (1..31)
+# |  |  |  .------- month (1..12) OR jan,feb,mar,...
+# |  |  |  |  .---- day of week (0..6,7 -> sun,mon,..,sun) OR sun,mon,...
+# |  |  |  |  |
+# *  *  *  *  *
+# 12 18 *  *  *   echo every day at 18:12 h
+# */20 * * * *    echo every twenty minutes
+# 10 9-17 * * 1-5 echo every workday, each working hour, 10 past
+# 1 1 1,15,28 * * echo on the 1st, 15th and 28th each month, at 1:01 h
+
+# local script directory
+# 3 * * * * root run-parts $HOME/.local/etc/cron.hourly
