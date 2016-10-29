@@ -22,7 +22,10 @@ function cleanup
 {
   : # do some work
 }
+# in bash: EXIT also matches INT TERM
+# zsh/dash: EXIT doesn't mach INT TERM
+# everywhere: EXIT INT TERM yields 2 cleanup calls on SIGINT/TERM
+#trap cleanup EXIT INT TERM
 trap cleanup EXIT
-
 
 
