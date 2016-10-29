@@ -12,3 +12,6 @@
 
 # local script directory
 # 3 * * * * root run-parts $HOME/.local/etc/cron.hourly
+
+# See also:
+# http://unix.stackexchange.com/questions/7053/how-can-get-a-list-of-all-scheduled-cron-jobs-on-my-machine/7060#7060
