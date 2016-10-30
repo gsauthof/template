@@ -18,11 +18,7 @@ import sys
 #import pycountry as pyc
 #import zeep # SOAP
 
-try:
-  import colorlog
-  have_colorlog = True
-except ImportError:
-  have_colorlog = False
+# Command Line Argument Parsing
 
 def mk_arg_parser():
   p = argparse.ArgumentParser(
@@ -63,13 +59,32 @@ def parse_args(xs = None):
   args.config = []
   return args
 
+# Config File Parsing
+
 def read_config(filenames):
   c = configparser.ConfigParser()
   c.read(filenames)
   return c
 
+# Logging
+
 log_format    = '%(asctime)s - %(levelname)-8s - %(message)s'
 log_date_format = '%Y-%m-%d %H:%M:%S'
+
+## Simple Setup
+
+# Note that the basicConfig() call is a NOP in Jupyter
+# because Jupyter calls it before
+#logging.basicConfig(format=log_format, datefmt=log_date_format, level=logging.WARNING)
+#log = logging.getLogger(__name__)
+
+## Colored Logging and Optional File Sink
+
+try:
+  import colorlog
+  have_colorlog = True
+except ImportError:
+  have_colorlog = False
 
 def mk_formatter():
   f = logging.Formatter(log_format, log_date_format)
@@ -110,6 +125,8 @@ def setup_file_logging(filename):
   fh.setFormatter(f)
   log.addHandler(fh)
 
+# Main entry
+
 def run(args, conf):
   log.debug('Hello Debug')
   log.info('Hello Info')
@@ -131,6 +148,10 @@ def imain(argv, conf):
   return run(args, conf)
 
 if __name__ == '__main__':
-  sys.exit(main())
+  if 'IPython' in sys.modules:
+    # do something different when running inside a Jupyter notebook
+    pass
+  else:
+    sys.exit(main())
 
 # definitions for interactive use:
