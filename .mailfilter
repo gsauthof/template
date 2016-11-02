@@ -1,0 +1,41 @@
+
+# maildrop MDA configuration
+# to be stored as $HOME/.mailfilter
+# permissions are important, must be 600
+# also, mustn't be a symlink (i.e. copy or hardlink)
+#
+# a basic model of the maildrop pattern matching
+# (with header-only matching, the default):
+#
+# - each pattern is matched against the complete header, line by line,
+#   captures are taking from the first matching line
+# - headers in mime-attachments are matched, as well
+# - a to-statement delivers the message and terminates the mailfilter
+#   program
+#
+# cf. http://www.courier-mta.org/maildrop/maildropfilter.html
+
+cc md/copy
+
+xfilter "/opt/bogofilter-x.y.z/bin/bogofilter -e -p"
+
+# avoid matches in mime attachments where a X-Bogosity: Ham comes
+# before an old X-Bogosity: Spam header ...
+#
+# opening brace must be on the next line ...
+if (/^X-Bogosity: Ham, tests=bogofilter/)
+{
+  to maildir
+}
+elsif (/^X-Bogosity: Spam, tests=bogofilter/)
+{
+  to md/spamfilter
+}
+elsif (/^X-Bogosity: Unsure, tests=bogofilter, spamicity=0\.([89]|7[5-9])/)
+{
+  to md/spamfilter
+}
+
+
+to maildir
+
