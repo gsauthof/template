@@ -23,40 +23,36 @@ import sys
 def mk_arg_parser():
   p = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        description = 'Do some stuff',
+        description='Do some stuff',
         epilog='...')
-  p.add_argument('items', metavar = 'N', type = int, nargs='+',
-    help = 'some positional argument')
+  p.add_argument('items', metavar='N', type=int, nargs='+',
+      help='some positional argument')
   # conditional default, if option not present then None
   p.add_argument('--debug', nargs='?', metavar='FILE',
-    const='debug.log', help='log debug messages into file')
+      const='debug.log', help='log debug messages into file')
   p.add_argument('--sum', dest='accumulate', action='store_const',
-    const=sum, default=max,
-    help='sum the integers (default: find the max)')
-  p.add_argument('--turnon', action = 'store_true',
-    help='get bool flag')
-  p.add_argument('--turnoff', action = 'store_false', default = True,
-    help='disable bool flag')
-  p.add_argument('--output', '-o', metavar = 'DIR', required = True,
-    help='output directory')
-  p.add_argument('-x', action='append', help = 'exclude filters')
-  p.add_argument('--config', action='append',
-    metavar='FILENAME', help='user specific config file')
-  p.add_argument('--global-conf', default = '/usr/share/frank/frank.conf',
-    metavar='FILENAME', help='global config file')
-  p.add_argument('--sys-conf', default = '/etc/frank.conf',
-    metavar='FILENAME', help='machine specific config file')
+      const=sum, default=max,
+      help='sum the integers (default: find the max)')
+  p.add_argument('--turnon', action='store_true',
+      help='get bool flag')
+  p.add_argument('--turnoff', action='store_false', default=True,
+      help='disable bool flag')
+  p.add_argument('--output', '-o', metavar='DIR', required=True,
+      help='output directory')
+  # if not specified filters == None and filters != []
+  p.add_argument('-x', action='append', dest='filters', help='exclude filters')
+  p.add_argument('--config', action='append', default=[],
+      metavar='FILENAME', help='user specific config file')
+  p.add_argument('--global-conf', default='/usr/share/frank/frank.conf',
+      metavar='FILENAME', help='global config file')
+  p.add_argument('--sys-conf', default='/etc/frank.conf',
+      metavar='FILENAME', help='machine specific config file')
   return p
 
-def parse_args(xs = None):
+def parse_args(*a):
   arg_parser = mk_arg_parser()
-  if xs or xs == []:
-  args = arg_parser.parse_args(xs)
-  else:
-  args = arg_parser.parse_args()
+  args = arg_parser.parse_args(*a)
   # sanity check/cleanup arguments
-  if not args.config: # is None if no option present
-  args.config = []
   return args
 
 # Config File Parsing
@@ -68,7 +64,7 @@ def read_config(filenames):
 
 # Logging
 
-log_format    = '%(asctime)s - %(levelname)-8s - %(message)s'
+log_format      = '%(asctime)s - %(levelname)-8s - %(message)s'
 log_date_format = '%Y-%m-%d %H:%M:%S'
 
 ## Simple Setup
@@ -135,8 +131,8 @@ def run(args, conf):
   log.critical('Hello Critical')
   return 0
 
-def main():
-  args = parse_args()
+def main(*a):
+  args = parse_args(*a)
   conf = read_config([args.global_conf, args.sys_conf]
     + [os.path.expanduser(x) for x in args.config] )
   if conf.has_section('global'):
