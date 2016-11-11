@@ -94,9 +94,9 @@ def mk_logger():
   if have_colorlog and os.isatty(2):
     cformat   = '%(log_color)s' + log_format
     f = colorlog.ColoredFormatter(cformat, log_date_format,
-          log_colors = { 'DEBUG'   : 'reset',        'INFO' : 'reset',
-                         'WARNING' : 'bold_yellow' , 'ERROR': 'bold_red',
-                         'CRITICAL': 'bold_red'})
+          log_colors = { 'DEBUG'   : 'reset',       'INFO' : 'reset',
+                         'WARNING' : 'bold_yellow', 'ERROR': 'bold_red',
+                         'CRITICAL': 'bold_red' })
 
   else:
     f = logging.Formatter(log_format, log_date_format)
