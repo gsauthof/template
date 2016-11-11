@@ -91,22 +91,19 @@ def mk_logger():
   log.setLevel(logging.DEBUG)
   #log.setLevel(logging.INFO)
 
-  if have_colorlog:
+  if have_colorlog and os.isatty(2):
     cformat   = '%(log_color)s' + log_format
-    cf = colorlog.ColoredFormatter(cformat, log_date_format,
-        log_colors = { 'DEBUG': 'reset', 'INFO': 'reset',
-            'WARNING' : 'bold_yellow' , 'ERROR': 'bold_red',
-            'CRITICAL': 'bold_red'})
+    f = colorlog.ColoredFormatter(cformat, log_date_format,
+          log_colors = { 'DEBUG'   : 'reset',        'INFO' : 'reset',
+                         'WARNING' : 'bold_yellow' , 'ERROR': 'bold_red',
+                         'CRITICAL': 'bold_red'})
 
   else:
-    cf = logging.Formatter(log_format, log_date_format)
+    f = logging.Formatter(log_format, log_date_format)
 
   ch = logging.StreamHandler()
   ch.setLevel(logging.WARNING)
-  if os.isatty(2):
-    ch.setFormatter(cf)
-  else:
-    ch.setFormatter(f)
+  ch.setFormatter(f)
   log.addHandler(ch)
 
   return logging.getLogger(__name__)
