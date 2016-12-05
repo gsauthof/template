@@ -28,8 +28,8 @@ def mk_arg_parser():
   p.add_argument('items', metavar='N', type=int, nargs='+',
       help='some positional argument')
   # conditional default, if option not present then None
-  p.add_argument('--debug', nargs='?', metavar='FILE',
-      const='debug.log', help='log debug messages into file')
+  p.add_argument('--log', nargs='?', metavar='FILE',
+      const='debug.log', help='log all messages into FILE')
   p.add_argument('--sum', dest='accumulate', action='store_const',
       const=sum, default=max,
       help='sum the integers (default: find the max)')
@@ -53,6 +53,8 @@ def parse_args(*a):
   arg_parser = mk_arg_parser()
   args = arg_parser.parse_args(*a)
   # sanity check/cleanup arguments
+  if args.log:
+    setup_file_logging(args.debug)
   return args
 
 # Config File Parsing
@@ -71,7 +73,9 @@ log_date_format = '%Y-%m-%d %H:%M:%S'
 
 # Note that the basicConfig() call is a NOP in Jupyter
 # because Jupyter calls it before
-#logging.basicConfig(format=log_format, datefmt=log_date_format, level=logging.WARNING)
+#logging.basicConfig(format=log_format, datefmt=log_date_format, level=logging.INFO
+# restrict console logger - in that way, another handler can be more verbose
+#logging.getLogger().handlers[0].setLevel(logging.WARNING)
 #log = logging.getLogger(__name__)
 
 ## Colored Logging and Optional File Sink
