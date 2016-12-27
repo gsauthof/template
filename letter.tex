@@ -13,10 +13,15 @@
 
 % 4 column efiale pdf: first row, first column
 % trim -> left-margin-to-crop, bottom-margin-to-crop, right-margin-to-crop, top
+%\newcommand{\includepostage}[1]{%
+%  \AddToShipoutPictureBG*{%
+%    \put(\LenToUnit{69mm},\LenToUnit{-70mm}){%
+%      \includegraphics[trim=25mm 261mm 149mm 25mm,clip]{#1}}}}
+% for postage that includes the addressfield
 \newcommand{\includepostage}[1]{%
   \AddToShipoutPictureBG*{%
-    \put(\LenToUnit{69mm},\LenToUnit{-70mm}){%
-      \includegraphics[trim=25mm 261mm 149mm 25mm,clip]{#1}}}}
+    \put(\LenToUnit{19mm},\LenToUnit{-74mm}){%
+      \includegraphics[trim=14mm 238mm 122mm 30mm,clip]{#1}}}}
 
 
 % Read some generic variable which likely are
@@ -32,6 +37,9 @@
 
 \KOMAoptions{fromphone=true}
 \KOMAoptions{fromemail=false}
+% omit address in the letter window in case it is already
+% included in the postage
+%\KOMAoptions{addrfield=false}
 
 %\setkomavar{yourref}[Bezeichnung]{Inhalt}
 %\setkomavar{yourmail}[Bezeichnung]{Inhalt}
