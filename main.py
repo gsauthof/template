@@ -54,7 +54,7 @@ def parse_args(*a):
   args = arg_parser.parse_args(*a)
   # sanity check/cleanup arguments
   if args.log:
-    setup_file_logging(args.debug)
+    setup_file_logging(args.log)
   return args
 
 # Config File Parsing
@@ -69,14 +69,17 @@ def read_config(filenames):
 log_format      = '%(asctime)s - %(levelname)-8s - %(message)s'
 log_date_format = '%Y-%m-%d %H:%M:%S'
 
+# handle for the module
+log = logging.getLogger(__name__)
+
 ## Simple Setup
 
 # Note that the basicConfig() call is a NOP in Jupyter
 # because Jupyter calls it before
-#logging.basicConfig(format=log_format, datefmt=log_date_format, level=logging.INFO
-# restrict console logger - in that way, another handler can be more verbose
-#logging.getLogger().handlers[0].setLevel(logging.WARNING)
-#log = logging.getLogger(__name__)
+#def setup_logging():
+#  logging.basicConfig(format=log_format, datefmt=log_date_format, level=logging.DEBUG) # or: loggin.INFO
+#  # restrict console logger - in that way, another handler can be more verbose
+#  logging.getLogger().handlers[0].setLevel(logging.WARNING)
 
 ## Colored Logging and Optional File Sink
 
@@ -86,11 +89,7 @@ try:
 except ImportError:
   have_colorlog = False
 
-def mk_formatter():
-  f = logging.Formatter(log_format, log_date_format)
-  return f
-
-def mk_logger():
+def setup_logging():
   log = logging.getLogger() # root logger
   log.setLevel(logging.DEBUG)
   #log.setLevel(logging.INFO)
@@ -110,9 +109,6 @@ def mk_logger():
   ch.setFormatter(f)
   log.addHandler(ch)
 
-  return logging.getLogger(__name__)
-
-log = mk_logger()
 
 def setup_file_logging(filename):
   log = logging.getLogger()
@@ -133,6 +129,7 @@ def run(args, conf):
   return 0
 
 def main(*a):
+  setup_logging()
   args = parse_args(*a)
   conf = read_config([args.global_conf, args.sys_conf]
     + [os.path.expanduser(x) for x in args.config] )
