@@ -15,13 +15,16 @@ CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Werror=multichar -Werror=sizeof-pointer-memaccess \
     -fstrict-aliasing
 
-# with C++, -Wwrite-strings is enabled by default
+# - with C++, -Wwrite-strings is enabled by default
+# - -Wall also includes -Wdelete-non-virtual-dtor which warns only actual
+#   problematic uses - in contrast to  -Wnon-virtual-dtor
 CXXFLAGSW_GCC = -Wall -Wextra \
     -Wno-unused-local-typedefs \
     -Wno-parentheses -Wno-missing-braces \
     -Wfloat-equal \
     -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
+    -Wnon-virtual-dtor \
     -Werror=multichar -Werror=sizeof-pointer-memaccess \
     -fstrict-aliasing
 
