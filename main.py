@@ -33,10 +33,10 @@ def mk_arg_parser():
   p.add_argument('--sum', dest='accumulate', action='store_const',
       const=sum, default=max,
       help='sum the integers (default: find the max)')
-  p.add_argument('--turnon', action='store_true',
-      help='get bool flag')
-  p.add_argument('--turnoff', action='store_false', default=True,
-      help='disable bool flag')
+  p.add_argument('--html', action='store_true', default=True,
+      help='generate HTML report (default: on)')
+  p.add_argument('--no-html', dest='html', action='store_false',
+      help='disable html report generation')
   p.add_argument('--output', '-o', metavar='DIR', required=True,
       help='output directory')
   # if not specified filters == None and filters != []
@@ -77,7 +77,8 @@ log = logging.getLogger(__name__)
 # Note that the basicConfig() call is a NOP in Jupyter
 # because Jupyter calls it before
 #def setup_logging():
-#  logging.basicConfig(format=log_format, datefmt=log_date_format, level=logging.DEBUG) # or: loggin.INFO
+#  logging.basicConfig(format=log_format, datefmt=log_date_format,
+#      level=logging.DEBUG) # or: loggin.INFO
 #  # restrict console logger - in that way, another handler can be more verbose
 #  logging.getLogger().handlers[0].setLevel(logging.WARNING)
 
@@ -109,6 +110,17 @@ def setup_logging():
   ch.setFormatter(f)
   log.addHandler(ch)
 
+## Logging format with relative time and short severity labels
+#
+#  class Relative_Formatter(logging.Formatter):
+#    level_dict = { 10 : 'DBG',  20 : 'INF', 30 : 'WRN', 40 : 'ERR',
+#        50 : 'CRI' }
+#    def format(self, rec):
+#      rec.rel_secs = rec.relativeCreated/1000.0
+#      rec.lvl = self.level_dict[rec.levelno]
+#      return super(Relative_Formatter, self).format(rec)
+#
+#  ch.setFormatter(Relative_Formatter(log_format, log_date_format, style='{'))
 
 def setup_file_logging(filename):
   log = logging.getLogger()
