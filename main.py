@@ -66,7 +66,7 @@ def read_config(filenames):
 
 # Logging
 
-log_format      = '%(asctime)s - %(levelname)-8s - %(message)s'
+log_format      = '%(asctime)s - %(levelname)-8s - %(message)s [%(name)s]'
 log_date_format = '%Y-%m-%d %H:%M:%S'
 
 # handle for the module
@@ -86,16 +86,15 @@ log = logging.getLogger(__name__)
 
 try:
   import colorlog
-  have_colorlog = True
 except ImportError:
-  have_colorlog = False
+  pass
 
 def setup_logging():
-  log = logging.getLogger() # root logger
-  log.setLevel(logging.DEBUG)
-  #log.setLevel(logging.INFO)
+  root = logging.getLogger()
+  root.setLevel(logging.DEBUG)
+  #root.setLevel(logging.INFO)
 
-  if have_colorlog and os.isatty(2):
+  if 'colorlog' in sys.modules and os.isatty(2):
     cformat   = '%(log_color)s' + log_format
     f = colorlog.ColoredFormatter(cformat, log_date_format,
           log_colors = { 'DEBUG'   : 'reset',       'INFO' : 'reset',
@@ -108,7 +107,7 @@ def setup_logging():
   ch = logging.StreamHandler()
   ch.setLevel(logging.WARNING)
   ch.setFormatter(f)
-  log.addHandler(ch)
+  root.addHandler(ch)
 
 ## Logging format with relative time and short severity labels
 #
