@@ -17,11 +17,16 @@
 %  \AddToShipoutPictureBG*{%
 %    \put(\LenToUnit{69mm},\LenToUnit{-70mm}){%
 %      \includegraphics[trim=25mm 261mm 149mm 25mm,clip]{#1}}}}
-% for postage that includes the addressfield
+% for postage that includes the addressfield ('Normalpapier'):
+%\newcommand{\includepostage}[1]{%
+%  \AddToShipoutPictureBG*{%
+%    \put(\LenToUnit{19mm},\LenToUnit{-74mm}){%
+%      \includegraphics[trim=14mm 238mm 122mm 30mm,clip]{#1}}}}
+% for postage that includes the addressfield ('Einlegeblatt'):
 \newcommand{\includepostage}[1]{%
   \AddToShipoutPictureBG*{%
-    \put(\LenToUnit{19mm},\LenToUnit{-74mm}){%
-      \includegraphics[trim=14mm 238mm 122mm 30mm,clip]{#1}}}}
+    \put(\LenToUnit{11mm},\LenToUnit{-80mm}){%
+      \includegraphics[trim=14mm 215mm 112mm 50mm,clip]{#1}}}}
 
 
 % Read some generic variable which likely are
