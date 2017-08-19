@@ -30,8 +30,17 @@ CXXFLAGSW_GCC = -Wall -Wextra \
     -Wnull-dereference \
     -Wnon-virtual-dtor \
     -Werror=multichar -Werror=sizeof-pointer-memaccess \
+    -Wmissing-declarations \
     -fstrict-aliasing
 
+# add to CFLAGS/CXXFLAGS/LDFLAGS
+SANFLAGS = -fsanitize=address -fsanitize=undefined
+
+# add to CFLAGS/CXXFLAGS/LDFLAGS
+STACKFLAGS = -fstack-protector-strong
+
+# add to CFLAGS/CXXFLAGS/LDFLAGS
+FORTFLAGS = -D_FORTIFY_SOURCE=2
 
 CFLAGS   += $(CFLAGSW_GCC)
 CXXFLAGS += $(CXXFLAGSW_GCC)
