@@ -29,17 +29,9 @@
       \includegraphics[trim=14mm 215mm 112mm 50mm,clip]{#1}}}}
 
 
-% Read some generic variable which likely are
-% constant for multiple letters, e.g.:
-%\setkomavar{fromname}{Dr.\ Joe User}
-%\setkomavar{fromaddress}{Fakestreet 1\\33613 Bielefeld}
-%\setkomavar{fromphone}{0\,12\,34~1\,23\,45\,67}
-%\setkomavar{fromemail}{mail@example.org}
-\input{$HOME/.config/latex/letter-conf.tex}
-
-
 % Letter specific options and variables
 
+%\KOMAoptions{backaddress=false}
 \KOMAoptions{fromphone=true}
 \KOMAoptions{fromemail=false}
 % omit address in the letter window in case it is already
@@ -56,6 +48,16 @@
 
 %\setkomavar{specialmail}{Büchersendung}
 %\setkomavar{specialmail}{Warensendung}
+
+
+% Read some generic variable which likely are
+% constant for multiple letters, e.g.:
+%\setkomavar{fromname}{Dr.\ Joe User}
+%\setkomavar{fromaddress}{Fakestreet 1\\33613 Bielefeld}
+%\setkomavar{fromphone}{0\,12\,34~1\,23\,45\,67}
+%\setkomavar{fromemail}{mail@example.org}
+\input{$HOME/.config/latex/letter-conf.tex}
+
 
 \setkomavar{subject}{XXX}
 
