@@ -16,7 +16,7 @@ CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
-    -Werror=multichar -Werror=sizeof-pointer-memaccess \
+    -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
     -fstrict-aliasing
 
 # - with C++, -Wwrite-strings is enabled by default
@@ -29,7 +29,7 @@ CXXFLAGSW_GCC = -Wall -Wextra \
     -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
     -Wnon-virtual-dtor \
-    -Werror=multichar -Werror=sizeof-pointer-memaccess \
+    -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
     -Wmissing-declarations \
     -fstrict-aliasing
 
