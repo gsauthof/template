@@ -3,7 +3,7 @@
 # those variables are picked up by build systems like cmake
 
 # cf. makefile
-CFLAGS="-Wall -Wextra -Wno-missing-field-initializers \
+CFLAGS="-O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
@@ -12,14 +12,13 @@ CFLAGS="-Wall -Wextra -Wno-missing-field-initializers \
     -fstrict-aliasing"
 export CFLAGS
 
-CXXFLAGS="-Wall -Wextra \
-    -Wno-unused-local-typedefs \
+CXXFLAGS="-O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
+    -Wno-unused-local-typedefs \
     -Wfloat-equal \
     -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
-    -Wnon-virtual-dtor \
+    -Wnon-virtual-dtor -Wmissing-declarations \
     -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
-    -Wmissing-declarations \
     -fstrict-aliasing"
 export CXXFLAGS

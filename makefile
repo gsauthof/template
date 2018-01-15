@@ -3,15 +3,19 @@
 # Default Variables
 ###########################################################################
 
-# good C language warning defaults for GCC
+# Good C language warning defaults for GCC
 #
 # The -Werror= options are already enabled as warnings - they are
-# treated as errors to underscore their severity
+# treated as errors to underscore their severity.
 #
-# also useful:
+# -O1 (or higher) is important since some warning modes don't get the required
+# input without any optimizations. Of course, can be overriden by a following
+# optimization option.
+#
+# Not a good default, but also useful:
 #   -flto since it enables -Wlto-type-mismatch
 #
-CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
+CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
@@ -22,22 +26,23 @@ CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
 # - with C++, -Wwrite-strings is enabled by default
 # - -Wall also includes -Wdelete-non-virtual-dtor which warns only actual
 #   problematic uses - in contrast to  -Wnon-virtual-dtor
-CXXFLAGSW_GCC = -Wall -Wextra \
-    -Wno-unused-local-typedefs \
+CXXFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
+    -Wno-unused-local-typedefs \
     -Wfloat-equal \
     -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
-    -Wnon-virtual-dtor \
+    -Wnon-virtual-dtor -Wmissing-declarations \
     -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
-    -Wmissing-declarations \
     -fstrict-aliasing
 
 # add to CFLAGS/CXXFLAGS/LDFLAGS
 SANFLAGS = -fsanitize=address -fsanitize=undefined
 
 # add to CFLAGS/CXXFLAGS/LDFLAGS
-STACKFLAGS = -fstack-protector-strong
+# even a low optimization level like -O1 can help to better trigger
+# the canary for certain stackoverflows
+STACKFLAGS = -O1 -fstack-protector-strong
 
 # add to CFLAGS/CXXFLAGS/LDFLAGS
 FORTFLAGS = -D_FORTIFY_SOURCE=2
