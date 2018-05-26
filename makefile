@@ -14,6 +14,7 @@
 #
 # Not a good default, but also useful:
 #   -flto since it enables -Wlto-type-mismatch
+#   -Wduplicated-branches because it's too new (GCC >= 7)
 #
 CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
