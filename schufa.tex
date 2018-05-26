@@ -1,0 +1,68 @@
+\documentclass[a4paper]{scrlttr2}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp} % euro symbol
+\usepackage{graphicx}
+
+
+% Letter specific options and variables
+
+%\KOMAoptions{backaddress=false}
+\KOMAoptions{fromphone=false}
+\KOMAoptions{fromemail=false}
+% cf. letter.tex template
+\input{$HOME/.config/latex/letter-conf.tex}
+
+
+\setkomavar{subject}{Antrag auf Auskunftserteilung nach § 34 Bundesdatenschutzgesetz}
+
+\begin{document}
+
+\newcommand{\mkletter}[3]{%
+\begin{letter}{%
+#1\newline
+#2\newline
+#3
+}
+\opening{Sehr geehrte Damen und Herren,}
+
+% Source: https://www.bfdi.bund.de/SharedDocs/Publikationen/Vordrucke/AuskunftsersuchenSchufa.pdf
+
+bitte erteilen Sie mir gemäß § 34 Bundesdatenschutzgesetz Auskunft über
+
+\begin{itemize}
+\item die zu meiner Person bei Ihnen gespeicherten Daten,
+\item den Zweck der Speicherung,
+\item die Herkunft der Daten und die empfangenden Stellen oder Kategorien von
+empfangenden Stellen, an die Daten weitergegeben wurden,
+\item meine aktuellen Wahrscheinlichkeitswerte (Scorewerte) und die zu meiner
+Person innerhalb der letzten zwölf Monate übermittelten Scorewerte,
+\item eine individuelle und einzelfallbezogene Erklärung meiner Scorewerte.
+\end{itemize}
+
+Sollten Sie weitere Angaben zum Nachweis meiner Identität benötigen, stehe ich
+Ihnen für Rückfragen zur Verfügung.
+
+\closing{Mit freundlichen Grüßen}
+
+\end{letter}
+}
+
+% cf.
+% https://www.finanztip.de/schufa/auskunfteien/
+% https://www.test.de/Auskunfteien-Nach-den-eigenen-Daten-fragen-1857247-1858283/
+
+\mkletter{SCHUFA Holding AG}{Postfach 10~25~66}{44725 Bochum}
+\mkletter{Deltavista GmbH}{Kaiserstraße 217}{76133 Karlsruhe}
+\mkletter{Bürgel Wirtschaftsinformationen GmbH}{Gasstraße 18}{22761 Hamburg}
+\mkletter{Creditreform Boniversum GmbH}{Hellersbergstr.\ 11}{41460 Neuss}
+\mkletter{Infoscore Consumer Data GmbH}{Rheinstraße 99}{76532 Baden-Baden}
+
+% for electronic postage printing: extract them via e.g.:
+%
+% grep '^\\'mkletter schufa.tex | sed -e 's/\\mkletter{//' -e 's/}$//' -e 's/~/ /g' -e 's/\\//g' -e 's/}{/;/g' -e "s/\(^.*$\)/'\1' /" | tr -d '\n'
+
+\end{document}
