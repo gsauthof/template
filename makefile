@@ -11,6 +11,9 @@
 # -O1 (or higher) is important since some warning modes don't get the required
 # input without any optimizations. Of course, can be overriden by a following
 # optimization option.
+# -Og is an alternative.
+# -fno-omit-frame-pointer might be necessary for nicer stacktraces with some
+#  optimization levels
 #
 # Not a good default, but also useful:
 #   -flto since it enables -Wlto-type-mismatch
@@ -25,8 +28,10 @@ CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -fstrict-aliasing
 
 # - with C++, -Wwrite-strings is enabled by default
-# - -Wall also includes -Wdelete-non-virtual-dtor which warns only actual
-#   problematic uses - in contrast to  -Wnon-virtual-dtor
+# - -Wall also includes -Wdelete-non-virtual-dtor - it basically
+#   warns about a subset of -Wnon-virtual-dtor - and there doesn't
+#   seem to be a valid use case where ignoring it would be ok, thus,
+#   it's promoted to a Werror.
 CXXFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wno-unused-local-typedefs \
@@ -35,6 +40,7 @@ CXXFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wnull-dereference \
     -Wnon-virtual-dtor -Wmissing-declarations \
     -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
+    -Werror=delete-non-virtual-dtor \
     -fstrict-aliasing
 
 # add to CFLAGS/CXXFLAGS/LDFLAGS

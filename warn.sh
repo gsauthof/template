@@ -20,5 +20,6 @@ CXXFLAGS="-O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wnull-dereference \
     -Wnon-virtual-dtor -Wmissing-declarations \
     -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
+    -Werror=delete-non-virtual-dtor \
     -fstrict-aliasing"
 export CXXFLAGS
