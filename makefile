@@ -34,12 +34,14 @@ CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
 #   warns about a subset of -Wnon-virtual-dtor - and there doesn't
 #   seem to be a valid use case where ignoring it would be ok, thus,
 #   it's promoted to a Werror.
-# - -Weffc++ because it's actually about 7 separate issues where some are very
-#   useful but some produce many false-positives (and misses C++11 support),
-#   especially regarding initialization of already initialized members
-#   cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=16166
-#   -> when resolved there are perhaps some improved
-#      and more fine grained options
+#
+# Not a good default, but also useful:
+#   -Weffc++ because it's actually about 7 separate issues where some are very
+#     useful but some produce many false-positives (and miss C++11 support),
+#     especially regarding initialization of already initialized members
+#     cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=16166
+#     -> when resolved there are perhaps some improved
+#        and more fine grained options
 CXXFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wno-unused-local-typedefs \
