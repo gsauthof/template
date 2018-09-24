@@ -5,11 +5,13 @@
 
 # Good C language warning defaults for GCC
 #
-# The -Werror= options are already enabled as warnings - they are
+# The -Werror= options are already enabled as warnings by -Wall - they are
 # treated as errors to underscore their severity.
 #
+# Also enabled by -Wall (but not documented as such): -Wuninitialized
+#
 # -O1 (or higher) is important since some warning modes don't get the required
-# input without any optimizations. Of course, can be overriden by a following
+# input without any optimizations. Of course, can be overridden by a following
 # optimization option.
 # -Og is an alternative.
 # -fno-omit-frame-pointer might be necessary for nicer stacktraces with some
@@ -32,6 +34,12 @@ CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
 #   warns about a subset of -Wnon-virtual-dtor - and there doesn't
 #   seem to be a valid use case where ignoring it would be ok, thus,
 #   it's promoted to a Werror.
+# - -Weffc++ because it's actually about 7 separate issues where some are very
+#   useful but some produce many false-positives (and misses C++11 support),
+#   especially regarding initialization of already initialized members
+#   cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=16166
+#   -> when resolved there are perhaps some improved
+#      and more fine grained options
 CXXFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wno-unused-local-typedefs \
