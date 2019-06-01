@@ -1,4 +1,5 @@
-// Copyright 2014, Georg Sauthoff <mail@georg.so>
+// Copyright 2019, Georg Sauthoff <mail@gms.tf>
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 /* {{{ GPLv3
 

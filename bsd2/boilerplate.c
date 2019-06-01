@@ -1,4 +1,5 @@
-// Copyright (c) 2015, Georg Sauthoff <mail@georg.so>
+// Copyright (c) 2019, Georg Sauthoff <mail@gms.tf>
+// SPDX-License-Identifier: BSD-2-Clause
 
 /* {{{ 2-clause BSD
 
