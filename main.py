@@ -34,7 +34,7 @@ def mk_arg_parser():
       const=sum, default=max,
       help='sum the integers (default: find the max)')
   p.add_argument('--html', action='store_true', default=True,
-      help='generate HTML report (default: on)')
+      help='generate HTML report (default: %(default)s)')
   p.add_argument('--no-html', dest='html', action='store_false',
       help='disable html report generation')
   p.add_argument('--output', '-o', metavar='DIR', required=True,
@@ -44,9 +44,9 @@ def mk_arg_parser():
   p.add_argument('--config', action='append', default=[],
       metavar='FILENAME', help='user specific config file')
   p.add_argument('--global-conf', default='/usr/share/frank/frank.conf',
-      metavar='FILENAME', help='global config file')
+      metavar='FILENAME', help='global config file %(default)s')
   p.add_argument('--sys-conf', default='/etc/frank.conf',
-      metavar='FILENAME', help='machine specific config file')
+      metavar='FILENAME', help='machine specific config file %(default)s')
   return p
 
 def parse_args(*a):
