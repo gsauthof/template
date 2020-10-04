@@ -10,18 +10,17 @@
 #
 # Also enabled by -Wall (but not documented as such): -Wuninitialized
 #
-# -O1 (or higher) is important since some warning modes don't get the required
-# input without any optimizations. Of course, can be overridden by a following
-# optimization option.
+# NB: -O1 (or higher) is important since some warning modes don't get the required
+# input without any optimizations.
 # -Og is an alternative.
 # -fno-omit-frame-pointer might be necessary for nicer stacktraces with some
-#  optimization levels
+#                         optimization levels
 #
 # Not a good default, but also useful:
 #   -flto since it enables -Wlto-type-mismatch
 #   -Wduplicated-branches because it's too new (GCC >= 7)
 #
-CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
+CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
@@ -42,7 +41,7 @@ CFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
 #     cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=16166
 #     -> when resolved there are perhaps some improved
 #        and more fine grained options
-CXXFLAGSW_GCC = -O1 -Wall -Wextra -Wno-missing-field-initializers \
+CXXFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-parentheses -Wno-missing-braces \
     -Wno-unused-local-typedefs \
     -Wfloat-equal \
