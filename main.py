@@ -20,6 +20,8 @@ import sys
 
 # Command Line Argument Parsing
 
+__version__ = '1.2.3'
+
 def mk_arg_parser():
   p = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -47,6 +49,7 @@ def mk_arg_parser():
       metavar='FILENAME', help='global config file %(default)s')
   p.add_argument('--sys-conf', default='/etc/frank.conf',
       metavar='FILENAME', help='machine specific config file %(default)s')
+  p.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
   return p
 
 def parse_args(*a):
