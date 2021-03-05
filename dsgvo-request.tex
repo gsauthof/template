@@ -1,0 +1,122 @@
+% Dies ist eine LaTeX-Version von dem "ct5F" (a.k.a. "Die
+% c't-Fassung von Framstags freundlichem Folterfragebogen"), den
+% das deutsche Computermagazin c't 2018 (c't 05/2018) und 2019
+% (heise online News 05/2019) veröffentlicht hat. Quellen:
+%
+% - https://www.heise.de/newsticker/meldung/DSGVO-So-nutzen-Sie-Ihre-Auskunftsrechte-4429886.html?seite=all
+% - ftp://ftp.heise.de/pub/ct/listings/1805-112.zip
+%
+% Dieser Text kann man als Reaktion auf unaufgefordert zugesandte
+% ungewünschte persönlich addressierte Werbung verschicken um
+% die Auskunfts- und Widerspruchsrechte nach DSGVO
+% (https://de.wikipedia.org/wiki/Datenschutz-Grundverordnung)
+% maximal zu nutzen.
+%
+% Die c't Autoren merken zu ihrem Text an:
+% 'Unsere im Folgenden zu findende Vorlage steht zum [sic] auch zum
+% Download und zur nichtkommerziellen Nutzung frei zur Verfügung.
+% Unseriöse Versender oder Spammer benutzen Ihre Adresse? Foltern
+% Sie sie!'
+
+\documentclass[a4paper,DIV=11]{scrartcl}
+\usepackage{scrletter}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp} % euro symbol
+\usepackage[texcoord]{eso-pic}
+\usepackage{graphicx}
+
+\usepackage[shortlabels]{enumitem}
+
+% 4 column efiale pdf: first row, first column
+% trim -> left-margin-to-crop, bottom-margin-to-crop, right-margin-to-crop, top
+%\newcommand{\includepostage}[1]{%
+%  \AddToShipoutPictureBG*{%
+%    \put(\LenToUnit{69mm},\LenToUnit{-70mm}){%
+%      \includegraphics[trim=25mm 261mm 149mm 25mm,clip]{#1}}}}
+% for postage that includes the addressfield ('Normalpapier'):
+%\newcommand{\includepostage}[1]{%
+%  \AddToShipoutPictureBG*{%
+%    \put(\LenToUnit{19mm},\LenToUnit{-74mm}){%
+%      \includegraphics[trim=14mm 238mm 122mm 30mm,clip]{#1}}}}
+% for postage that includes the addressfield ('Einlegeblatt'):
+\newcommand{\includepostage}[1]{%
+  \AddToShipoutPictureBG*{%
+    \put(\LenToUnit{11mm},\LenToUnit{-85mm}){%
+      \includegraphics[trim=14mm 210mm 112mm 50mm,clip]{#1}}}}
+% for postage that includes the addressfield ('c6'):
+%\newcommand{\includepostage}[1]{%
+%  \AddToShipoutPictureBG*{%
+%    \put(\LenToUnit{16mm},\LenToUnit{-85mm}){%
+%      \includegraphics[trim=50mm 30mm 30mm 45mm,clip]{#1}}}}
+
+
+% Letter specific options and variables
+
+%\KOMAoptions{backaddress=false}
+\KOMAoptions{fromphone=false}
+\KOMAoptions{fromemail=false}
+% omit address in the letter window in case it is already
+% included in the postage
+%\KOMAoptions{addrfield=false}
+
+
+% Read some generic variable which likely are
+% constant for multiple letters, e.g.:
+%\setkomavar{fromname}{Dr.\ Joe User}
+%\setkomavar{fromaddress}{Fakestreet 1\\33613 Bielefeld}
+%\setkomavar{fromphone}{0\,12\,34~1\,23\,45\,67}
+%\setkomavar{fromemail}{mail@example.org}
+\input{$HOME/.config/latex/letter-conf.tex}
+
+
+\setkomavar{subject}{Datenschutzrechtliche Selbstauskunft nach DSGVO}
+
+\begin{document}
+\begin{letter}{%
+Acxiom Deutschland GmbH\\
+Martin-Behaim-Str.\ 12\\
+63263 Neu-Isenburg
+}
+%\includepostage{postage.pdf}
+\opening{Sehr geehrte Damen und Herren,}
+
+nach Art.\ 15 DSGVO habe ich das Recht, von Ihnen eine Bestätigung darüber zu verlangen, ob Sie personenbezogene Daten über meine Person gespeichert haben. Sofern dies der Fall ist, so habe ich ein Recht auf Auskunft über diese Daten.
+
+\section{Auskunft über meine bei Ihnen gespeicherten Daten}
+
+Ich darf Sie in diesem Fall bitten, mir gemäß Art.\ 15 Abs.\ 1 DSGVO folgende Informationen mitzuteilen:
+\begin{enumerate}[(a)]
+\item Welche Daten über meine Person konkret bei Ihnen gespeichert oder verarbeitet werden (z.B. Name, Vorname, Anschrift, Geburtsdatum, Beruf, medizinische Befunde).
+\item Weiterhin wollen Sie mich bitte über die Verarbeitungszwecke meiner Daten ebenso informieren wie über
+\item die Kategorien personenbezogener Daten, die bezüglich meiner Person verarbeitet werden;
+\item die Empfänger oder Kategorien von Empfängern, die meine Daten bereits erhalten haben oder künftig noch erhalten werden;
+\item die geplante Dauer für die Speicherung meiner Daten, oder, falls dies nicht möglich ist, die Kriterien für die Festlegung dieser Dauer;
+\item über das Bestehen meiner Rechte auf Berichtigung, Löschung oder Einschränkung der Verarbeitung meiner Daten, ebenso wie über mein Widerspruchsrecht gegen diese Verarbeitung nach Art.\ 21 DSGVO und mein Beschwerderecht bei der zuständigen Aufsichtsbehörde.
+\item Sofern die Daten nicht bei mir erhoben werden, fordere ich Sie auf, mir alle verfügbaren Informationen über die Herkunft der Daten mitzuteilen; sowie
+\item mir darzulegen, ob eine automatisierte Entscheidungsfindung einschließlich Profiling gemäß Art.\ 22 DSGVO besteht. In diesem Fall wollen Sie mir bitte aussagekräftige Informationen über die involvierte Logik und die angestrebten Auswirkungen einer derartigen Verarbeitung für meine Person mitteilen.
+\item Wurden meine personenbezogenen Daten an ein Drittland oder an eine internationale Organisation übermittelt, wollen Sie mir bitte mitteilen, welche geeigneten Garantien gemäß Art.\ 46 DSGVO im Zusammenhang mit der Übermittlung vorgesehen sind.
+\end{enumerate}
+
+Bitte stellen Sie mir kostenfrei eine Kopie meiner bei Ihnen gespeicherten personenbezogenen Daten zur Verfügung.
+%Sofern ich diesen Antrag elektronisch stelle und nichts anderes vermerke, so sind mir die Informationen in einem gängigen elektronischen Format zur Verfügung zu stellen.
+
+\section{Löschung meiner Daten}
+
+Weiterhin verlange ich nach Art.\ 17 DSGVO die \textbf{unverzügliche Löschung} meiner bei Ihnen verarbeiteten personenbezogenen Daten.
+Die Voraussetzungen des Art.\ 17 DSGVO liegen nach meiner Ansicht vor. Sofern ich eine Einwilligung zur Verarbeitung meiner Daten erteilt habe, widerrufe ich diese hiermit, bzw. lege gemäß Art.\ 21 DSGVO Widerspruch gegen die Verarbeitung ein. Dies gilt ebenso für das Profiling gemäß Art.\ 22 DSGVO. Lehnen Sie die Löschung ab, so haben Sie dies mir gegenüber zu begründen.
+Sofern Sie meine personenbezogenen Daten öffentlich zugänglich gemacht haben und gemäß Art.\ 17 Abs.\ 1 DSGVO zu deren Löschung verpflichtet sind, haben Sie angemessene Maßnahmen zu ergreifen, um sämtliche Empfänger meiner Daten darüber gemäß Art.\ 19 DSGVO zu informieren, dass ich die Löschung aller Links zu diesen personenbezogenen Daten oder von Kopien dieser personenbezogenen Daten verlangt habe.
+
+
+\section{Fristen und Rechtsfolgen}
+
+Auskunftserteilungen müssen gemäß Art.\ 12 Abs.\ 3 DSGVO unverzüglich erfolgen, spätestens aber innerhalb eines Monats. Sollte ich innerhalb dieser Frist keine Auskunft von Ihnen erhalten, so werde ich mich an die zuständige Aufsichtsbehörde wenden. Ich mache darauf aufmerksam, dass unterlassene oder nicht vollständige Auskunftserteilungen nach Art.\ 83 Abs.\ 5 DSGVO mit einer hohen Geldbuße bedroht sind.
+
+
+\closing{Mit freundlichen Grüßen}
+
+\end{letter}
+\end{document}
