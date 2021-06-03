@@ -21,7 +21,7 @@
 #   -Wduplicated-branches because it's too new (GCC >= 7)
 #
 CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
-    -Wno-parentheses -Wno-missing-braces \
+    -Wno-missing-braces \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
@@ -42,7 +42,7 @@ CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
 #     -> when resolved there are perhaps some improved
 #        and more fine grained options
 CXXFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
-    -Wno-parentheses -Wno-missing-braces \
+    -Wno-missing-braces \
     -Wno-unused-local-typedefs \
     -Wfloat-equal \
     -Wpointer-arith -Wcast-align \

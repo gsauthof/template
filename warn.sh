@@ -4,7 +4,7 @@
 
 # cf. makefile
 CFLAGSW="-Wall -Wextra -Wno-missing-field-initializers \
-    -Wno-parentheses -Wno-missing-braces \
+    -Wno-missing-braces \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
@@ -13,7 +13,7 @@ CFLAGSW="-Wall -Wextra -Wno-missing-field-initializers \
 export CFLAGSW
 
 CXXFLAGSW="-Wall -Wextra -Wno-missing-field-initializers \
-    -Wno-parentheses -Wno-missing-braces \
+    -Wno-missing-braces \
     -Wno-unused-local-typedefs \
     -Wfloat-equal \
     -Wpointer-arith -Wcast-align \
