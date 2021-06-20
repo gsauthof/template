@@ -1,0 +1,34 @@
+# Template for $HOME/.ssh/config
+
+## Global Settings
+
+# don't try keys cached in the ssh-agent
+IdentitiesOnly yes
+
+# disable fallback to password auth
+PreferredAuthentications publickey
+
+# NB: The IdentityFile directive is additive, i.e. when encountered multiple
+# times the result is a list of key files to try.
+#
+# With all other options, the first encounter has priority of later ones.
+
+
+## Host Specific Settings
+
+# NB: matching doesn't stop after the first `Host` match,
+# however, in multi match situation, most directives
+# only apply during the first encounter
+
+
+Host example
+User juser
+HostName jump.example.org
+IdentityFile ~/.ssh/example_ed25519_sk
+
+
+## Catch-All Default Settings
+
+#Host *    !example.net !192.0.2.23
+#IdentityFile ~/.ssh/standard_key
+
