@@ -1,4 +1,5 @@
-\documentclass[a4paper]{scrlttr2}
+%\documentclass[a4paper]{scrlttr2}
+\documentclass[a4paper,enlargefirstpage]{scrlttr2}
 
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
@@ -7,6 +8,8 @@
 \usepackage{textcomp} % euro symbol
 \usepackage{graphicx}
 
+\usepackage{enumitem} % more compact itemize
+\setlist{noitemsep}
 
 % Letter specific options and variables
 
@@ -17,7 +20,7 @@
 \input{$HOME/.config/latex/letter-conf.tex}
 
 
-\setkomavar{subject}{Antrag auf Auskunftserteilung nach § 34 Bundesdatenschutzgesetz}
+\setkomavar{subject}{Auskunftserteilung nach Art.\  15 DSGVO}
 
 \begin{document}
 
@@ -30,21 +33,27 @@
 \opening{Sehr geehrte Damen und Herren,}
 
 % Source: https://www.bfdi.bund.de/SharedDocs/Publikationen/Vordrucke/AuskunftsersuchenSchufa.pdf
+% Source: https://www.bfdi.bund.de/DE/Buerger/Mustertexte/Zwischenordner-f%C3%BCr-Mustertexte/Mustertexte_Allgemein.html
 
-bitte erteilen Sie mir gemäß § 34 Bundesdatenschutzgesetz Auskunft über
+
+bitte erteilen Sie mir gemäß Art.\  15 DSGVO Auskunft über
 
 \begin{itemize}
-\item die zu meiner Person bei Ihnen gespeicherten Daten,
-\item den Zweck der Speicherung,
-\item die Herkunft der Daten und die empfangenden Stellen oder Kategorien von
-empfangenden Stellen, an die Daten weitergegeben wurden,
-\item meine aktuellen Wahrscheinlichkeitswerte (Scorewerte) und die zu meiner
-Person innerhalb der letzten zwölf Monate übermittelten Scorewerte,
-\item eine individuelle und einzelfallbezogene Erklärung meiner Scorewerte.
+\item die zu meiner Person von Ihnen verarbeiteten Daten und deren Kategorien,
+\item den Zweck der Verarbeitung,
+\item Empfänger bzw.\ Empfängerkategorien, gegenüber denen die personenbezogenen Daten offengelegt worden sind oder noch offen gelegt werden,
+\item die Speicherdauer soweit möglich; anderenfalls die Kriterien zur Festlegung dieser Dauer,
+\item die Herkunft der Daten, soweit sie nicht bei mir erhoben wurden,
+\item das Bestehen einer automatisierten Entscheidungsfindung einschließlich Profiling gemäß Art.\  22 Absätze 1 und 4 DSGVO und aussagekräftiger Informationen über die involvierte Logik sowie die Tragweite und die angestrebten Auswirkungen dieser Verarbeitung auf meine Person,
+\item das Beschwerderecht bei einer Datenschutzaufsichtsbehörde,
+\item ggf.\ bestehende Rechte auf Löschung, Berichtigung, Einschränkung der Verarbeitung oder Widerspruch meine Daten betreffend.
 \end{itemize}
 
-Sollten Sie weitere Angaben zum Nachweis meiner Identität benötigen, stehe ich
-Ihnen für Rückfragen zur Verfügung.
+Ich bitte Sie, die Auskunft unverzüglich zu erteilen, spätestens aber innerhalb eines Monats (Art.\  12 Abs.\ 3 S.\ 1 DSGVO).
+
+
+% Sollten Sie weitere Angaben zum Nachweis meiner Identität benötigen, stehe ich Ihnen für Rückfragen zur Verfügung.
+
 
 \closing{Mit freundlichen Grüßen}
 
@@ -55,10 +64,14 @@ Ihnen für Rückfragen zur Verfügung.
 % https://www.finanztip.de/schufa/auskunfteien/
 % https://www.test.de/Auskunfteien-Nach-den-eigenen-Daten-fragen-1857247-1858283/
 
-\mkletter{SCHUFA Holding AG}{Postfach 10~25~66}{44725 Bochum}
-\mkletter{Deltavista GmbH}{Kaiserstraße 217}{76133 Karlsruhe}
-\mkletter{Bürgel Wirtschaftsinformationen GmbH}{Gasstraße 18}{22761 Hamburg}
-\mkletter{Creditreform Boniversum GmbH}{Hellersbergstr.\ 11}{41460 Neuss}
+\mkletter{SCHUFA}{Postfach 10~34~41}{50474 Köln}
+% CRIF GmbH,Team Selbstauskunft
+\mkletter{CRIF GmbH}{Friesenweg 22}{22763 Hamburg}
+% both are now part of CRIF, cf. https://de.wikipedia.org/wiki/Crif
+%\mkletter{Deltavista GmbH}{Kaiserstraße 217}{76133 Karlsruhe}
+%\mkletter{Bürgel Wirtschaftsinformationen GmbH}{Gasstraße 18}{22761 Hamburg}
+\mkletter{Creditreform Boniversum GmbH}{Hammfelddamm 13}{41460 Neuss}
+% a.k.a. Arvato Infoscore
 \mkletter{Infoscore Consumer Data GmbH}{Rheinstraße 99}{76532 Baden-Baden}
 
 % for electronic postage printing: extract them via e.g.:
