@@ -31,37 +31,12 @@
 
 \usepackage[shortlabels]{enumitem}
 
-% 4 column efiale pdf: first row, first column
-% trim -> left-margin-to-crop, bottom-margin-to-crop, right-margin-to-crop, top
-%\newcommand{\includepostage}[1]{%
-%  \AddToShipoutPictureBG*{%
-%    \put(\LenToUnit{69mm},\LenToUnit{-70mm}){%
-%      \includegraphics[trim=25mm 261mm 149mm 25mm,clip]{#1}}}}
-% for postage that includes the addressfield ('Normalpapier'):
-%\newcommand{\includepostage}[1]{%
-%  \AddToShipoutPictureBG*{%
-%    \put(\LenToUnit{19mm},\LenToUnit{-74mm}){%
-%      \includegraphics[trim=14mm 238mm 122mm 30mm,clip]{#1}}}}
-% for postage that includes the addressfield ('Einlegeblatt'):
-\newcommand{\includepostage}[1]{%
-  \AddToShipoutPictureBG*{%
-    \put(\LenToUnit{11mm},\LenToUnit{-85mm}){%
-      \includegraphics[trim=14mm 210mm 112mm 50mm,clip]{#1}}}}
-% for postage that includes the addressfield ('c6'):
-%\newcommand{\includepostage}[1]{%
-%  \AddToShipoutPictureBG*{%
-%    \put(\LenToUnit{16mm},\LenToUnit{-85mm}){%
-%      \includegraphics[trim=50mm 30mm 30mm 45mm,clip]{#1}}}}
-
 
 % Letter specific options and variables
 
 %\KOMAoptions{backaddress=false}
 \KOMAoptions{fromphone=false}
 \KOMAoptions{fromemail=false}
-% omit address in the letter window in case it is already
-% included in the postage
-%\KOMAoptions{addrfield=false}
 
 
 % Read some generic variable which likely are
@@ -85,7 +60,6 @@ Bisnode Deutschland GmbH\\
 Robert-Bosch-Strasse 11\\
 64293 Darmstadt
 }
-%\includepostage{postage.pdf}
 \opening{Sehr geehrte Damen und Herren,}
 
 nach Art.\ 15 DSGVO habe ich das Recht, von Ihnen eine Bestätigung darüber zu verlangen, ob Sie personenbezogene Daten über meine Person gespeichert haben. Sofern dies der Fall ist, so habe ich ein Recht auf Auskunft über diese Daten.
