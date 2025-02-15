@@ -137,7 +137,7 @@ def setup_file_logging(filename):
 def run(args, conf):
   log.debug('Hello Debug')
   log.info('Hello Info')
-  log.warn('Hello Warn')
+  log.warning('Hello Warn')
   log.error('Hello Error')
   log.critical('Hello Critical')
   return 0
