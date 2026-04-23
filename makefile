@@ -24,7 +24,9 @@ CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Wmissing-prototypes -Wfloat-equal \
     -Wwrite-strings -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
-    -Wduplicated-branches -Wduplicated-cond -Wformat=2 \
+    -Wduplicated-branches -Wduplicated-cond -Wformat=2 -Wformat-signedness \
+    -Wlogical-op -Wdouble-promotion \
+    -Wjump-misses-init \
     -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
     -fstrict-aliasing
 
@@ -41,6 +43,8 @@ CFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
 #     cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=16166
 #     -> when resolved there are perhaps some improved
 #        and more fine grained options
+#   -Wuseless-cast - doesn't warn anymore since GCC 13, only worked for C++
+#   -Wold-style-cast - might be too pedantic, depending on the code-base
 CXXFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Wno-missing-braces \
     -Wno-unused-local-typedefs \
@@ -48,7 +52,8 @@ CXXFLAGSW_GCC = -Wall -Wextra -Wno-missing-field-initializers \
     -Wpointer-arith -Wcast-align \
     -Wnull-dereference \
     -Wnon-virtual-dtor -Wmissing-declarations \
-    -Wduplicated-branches -Wduplicated-cond -Wformat=2 \
+    -Wduplicated-branches -Wduplicated-cond -Wformat=2 -Wformat-signedness \
+    -Wlogical-op -Wdouble-promotion \
     -Werror=multichar -Werror=sizeof-pointer-memaccess -Werror=return-type \
     -Werror=delete-non-virtual-dtor \
     -fstrict-aliasing
