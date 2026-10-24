@@ -16,8 +16,26 @@ being high-level, usually follows a template. Adding licensing
 information one probably cannot avoid adding boilerplate.
 
 
-2016, Georg Sauthoff <mail@georg.so>
+2016-2026, Georg Sauthoff <mail@georg.so>
+
+
+## Repository Remote Location
+
+The main remote location of this repository is:
+https://codeberg.org/gms/template
+
+Previously, I pushed that repository to github, but due to the
+[enshittification][3] of github, I'm in the process of dropping
+the github location.
+That means first step is archiving my github remote,
+i.e. having it marked as archived and set to read-only,
+possibly followed by a complete removal at a later point in time.
+
+Anyhow, to continue following this repository and getting updates
+make sure to update your remote and bookmarks to the new codeberg
+location.
 
 
 [1]: https://en.wikipedia.org/wiki/Boilerplate_code
 [2]: https://en.wikipedia.org/wiki/Don't_repeat_yourself
+[3]: https://en.wikipedia.org/wiki/Enshittification
